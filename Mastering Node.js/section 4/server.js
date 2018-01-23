@@ -4,7 +4,7 @@ var through = require("through2");
 
 var server = http.createServer((request, response) => {
     if (request.method === 'POST') {
-        request.pipe(through(function(buf, _, next) {
+        request.pipe(through(function (buf, _, next) {
             this.push(buf.toString().toUpperCase());
             next();
         })).pipe(response);
@@ -15,6 +15,6 @@ var server = http.createServer((request, response) => {
 
 const PORT = 8080;
 
-server.listen(PORT, function() {
+server.listen(PORT, function () {
     console.log("server listing on : http://localhost:%s", PORT);
 });
